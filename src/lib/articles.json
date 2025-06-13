@@ -1,0 +1,19 @@
+[
+	{
+		"id": 1,
+		"title": "Steak mit Pommes",
+		"price": 12.99
+	},
+	[
+		{
+			"id": 2,
+			"title": "Pizza Margherita",
+			"price": 8.99
+		},
+		{
+			"id": 3,
+			"title": "Spaghetti Carbonara",
+			"price": 10.49
+		}
+	]
+]
