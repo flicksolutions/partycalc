@@ -13,19 +13,19 @@ jobs:
         uses: actions/checkout@v4
 
       # If you're using pnpm, add this step then change the commands and cache key below to use `pnpm`
-      # - name: Install pnpm
-      #   uses: pnpm/action-setup@v2
-      #   with:
-      #     version: 8
-
-      - name: Install Node.js
-        uses: actions/setup-node@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
         with:
-          node-version: 23
-          cache: npm
+          version: 10
+
+      # - name: Install Node.js
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: 23
+      #     cache: npm
 
       - name: Install dependencies
-        run: npm install
+        run: pnpm install
 
       - name: build
         env:
@@ -33,7 +33,7 @@ jobs:
           BASE_PATH: ''
           NODE_OPTIONS: '--max_old_space_size=9000'
         run: |
-          npm run build
+          pnpm run build
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
