@@ -96,6 +96,11 @@
 					"id": 27,
 					"title": "Bratwurst mit Salat",
 					"price": 14
+				},
+				{
+					"id": 28,
+					"title": "Bratwurst gemischt",
+					"price": 14
 				}
 			],
 			[
@@ -113,6 +118,11 @@
 					"id": 24,
 					"title": "Steak mit Salat",
 					"price": 17
+				},
+				{
+					"id": 27,
+					"title": "Steak gemischt",
+					"price": 17
 				}
 			],
 			[
@@ -125,8 +135,18 @@
 					"id": 18,
 					"title": "Grillkäse mit Salat",
 					"price": 13
+				},
+				{
+					"id": 26,
+					"title": "Grillkäse gemischt",
+					"price": 13
 				}
 			],
+			{
+				"id": 25,
+				"title": "Salat",
+				"price": 4
+			},
 			{
 				"id": 19,
 				"title": "Pommes",
