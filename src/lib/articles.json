@@ -1,19 +1,147 @@
 [
-	{
-		"id": 1,
-		"title": "Steak mit Pommes",
-		"price": 12.99
-	},
 	[
-		{
-			"id": 2,
-			"title": "Pizza Margherita",
-			"price": 8.99
-		},
-		{
-			"id": 3,
-			"title": "Spaghetti Carbonara",
-			"price": 10.49
-		}
+		[
+			{
+				"id": 2,
+				"title": "Mineral, 50cl",
+				"price": 4
+			},
+			{
+				"id": 3,
+				"title": "Softdrink, 45cl/50cl",
+				"price": 4.5
+			},
+			{
+				"id": 4,
+				"title": "Mineral / Softgetränk, 150cl",
+				"price": 9
+			}
+		],
+		[
+			{
+				"id": 5,
+				"title": "Kaffee",
+				"price": 4
+			},
+			{
+				"id": 6,
+				"title": "Tee",
+				"price": 3
+			},
+			{
+				"id": 7,
+				"title": "Kaffee fertig",
+				"price": 6
+			},
+			{
+				"id": 8,
+				"title": "Kaffee Gumpesu",
+				"price": 7
+			}
+		],
+		[
+			{
+				"id": 9,
+				"title": "Bier, 50cl",
+				"price": 5
+			},
+			{
+				"id": 10,
+				"title": "Wein",
+				"price": 12
+			}
+		]
+	],
+	[
+		[
+			{
+				"id": 11,
+				"title": "Sandwich",
+				"price": 6
+			},
+			{
+				"id": 12,
+				"title": "Nussgipfel",
+				"price": 4
+			},
+			{
+				"id": 13,
+				"title": "Cake",
+				"price": 3
+			},
+			{
+				"id": 14,
+				"title": "Glace",
+				"price": 4.5
+			},
+			{
+				"id": 15,
+				"title": "Zopf",
+				"price": 3
+			}
+		],
+		[
+			[
+				{
+					"id": 25,
+					"title": "Bratwurst mit Pommes",
+					"price": 14
+				},
+				{
+					"id": 26,
+					"title": "Bratwurst mit Brot",
+					"price": 8
+				},
+				{
+					"id": 27,
+					"title": "Bratwurst mit Salat",
+					"price": 14
+				}
+			],
+			[
+				{
+					"id": 22,
+					"title": "Steak mit Pommes",
+					"price": 17
+				},
+				{
+					"id": 23,
+					"title": "Steak mit Brot",
+					"price": 12
+				},
+				{
+					"id": 24,
+					"title": "Steak mit Salat",
+					"price": 17
+				}
+			],
+			[
+				{
+					"id": 18,
+					"title": "Grillkäse mit Pommes",
+					"price": 13
+				},
+				{
+					"id": 18,
+					"title": "Grillkäse mit Salat",
+					"price": 13
+				}
+			],
+			{
+				"id": 19,
+				"title": "Pommes",
+				"price": 7
+			},
+			{
+				"id": 20,
+				"title": "Hot Dog",
+				"price": 7
+			},
+			{
+				"id": 21,
+				"title": "Fondue",
+				"price": 7
+			}
+		]
 	]
 ]

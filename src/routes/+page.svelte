@@ -4,13 +4,16 @@
 	import { order } from './order.svelte.ts';
 </script>
 
-<div>
-	<div>
-		List of items
-		<Recursive items={articles} />
-	</div>
-	<div>
-		calculations
+<div class="grid h-screen gap-5 p-5 md:grid-cols-[4fr_1fr]">
+	<h1 class="hidden">Kassensystem</h1>
+	<main>
+		<div>
+			<h2 class="h2">Produkte</h2>
+			<Recursive items={articles} />
+		</div>
+	</main>
+	<aside>
+		<h2 class="h2">Bestellung</h2>
 		<div>
 			{#each order.list as item (item.id)}
 				<h2>{item.title}</h2>
@@ -27,10 +30,10 @@
 		</div>
 		<p>Total: {order.sum}</p>
 		<div>
-			<button class="btn preset-filled-primary-500" onclick={() => order.clearOrders()}
-				>Clear</button
-			>
+			<button class="btn preset-filled-primary-500" onclick={() => order.clearOrders()}>
+				Clear
+			</button>
 			<button class="btn preset-filled-primary-500" disabled>Print</button>
 		</div>
-	</div>
+	</aside>
 </div>
