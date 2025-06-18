@@ -60,7 +60,34 @@
 			alert('Printer not connected');
 			return;
 		}
-		let data = encoder.initialize().text('Bestellungäöü').newline().encode();
+		let data = encoder
+			.initialize()
+			.size(2, 2)
+			.line(`Nr. ${orderCounter.current}`)
+			.size(1, 1)
+			.newline()
+			.width(2)
+			.line('-'.repeat(encoder.columns / 2))
+			.width(1);
+		const firstColumnWidth = Math.round(encoder.columns * 0.1);
+		data = data.table(
+			[
+				{ width: firstColumnWidth, marginRight: 1, align: 'right' },
+				{
+					width: encoder.columns - firstColumnWidth - 1,
+					align: 'left'
+				}
+			],
+			order.list.map((order) => [order.quantity?.toString(), order.title])
+		);
+		data = data
+			.width(2)
+			.line('-'.repeat(encoder.columns / 2))
+			.width(1)
+			.newline()
+			.newline()
+			.newline()
+			.encode();
 
 		printer.print(data);
 		orderCounter.current++;
