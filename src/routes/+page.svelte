@@ -3,13 +3,13 @@
 	import Recursive from './Recursive.svelte';
 	import { order } from './order.svelte.ts';
 	import { onMount } from 'svelte';
-	import { PersistedState } from 'runed';
+	import { ElementSize, PersistedState } from 'runed';
 	import ReceiptPrinterEncoder from '@point-of-sale/receipt-printer-encoder';
 
 	let printer: any;
 	const encoder = new ReceiptPrinterEncoder();
 
-	let printerID = $state();
+	let printerID = new PersistedState('printerID', null, { syncTabs: false });
 	let connected = $state(false);
 
 	let orderCounter = new PersistedState('orderCounter', 1, { syncTabs: false });
@@ -18,22 +18,70 @@
 		const WebBluetoothReceiptPrinter = (await import('@receipt-printer')).default;
 		printer = new WebBluetoothReceiptPrinter();
 		printer.addEventListener('connected', (device) => {
-			printerID = device.id;
+			printerID.current = device.id;
 			connected = true;
 			console.log('Connected to printer:', device);
 			// encoder = new ReceiptPrinterEncoder(); // might be necessary if codepage or language is not default
 		});
 	});
 
+	const checkConnection = async () => {
+		if (!connected) {
+			if (printerID.current) {
+				printer.reconnect(printerID.current);
+				// wait until connected is true
+				console.log('Waiting for printer connection...', printerID.current);
+				let couldConnect = await new Promise((resolve) => {
+					let attempts = 0;
+					const interval = setInterval(() => {
+						console.log('Checking printer connection...');
+						if (connected) {
+							clearInterval(interval);
+							console.log('Printer connected:', printerID.current);
+							resolve(true);
+						} else if (++attempts >= 10) {
+							clearInterval(interval);
+							console.log('Printer connection timeout');
+							resolve(false);
+						}
+					}, 200);
+				});
+				if (couldConnect) {
+					return true;
+				}
+			}
+			printerID.current = await printer.connect();
+		}
+		return true;
+	};
+
 	const handlePrint = async () => {
-		if (!printerID) {
-			printerID = await printer.connect();
-		} else {
-			await printer.reconnect(printerID);
+		if (!(await checkConnection())) {
+			alert('Printer not connected');
+			return;
 		}
 		let data = encoder.initialize().text('Bestellungäöü').newline().encode();
+
 		printer.print(data);
 		orderCounter.current++;
+	};
+
+	const handleOrderNrPrint = async () => {
+		if (!(await checkConnection())) {
+			alert('Printer not connected');
+			return;
+		}
+		let data = encoder
+			.initialize()
+			.box({ width: encoder.columns, align: 'center', style: 'double' }, (encoder) =>
+				encoder.size(2, 2).line(`Bestellung`).line(`Nr. ${orderCounter.current}`)
+			)
+			.newline()
+			.newline()
+			.newline()
+			.encode();
+
+		printer.print(data);
 	};
 </script>
 
@@ -75,7 +123,10 @@
 				<button class="btn preset-filled-primary-500" onclick={() => order.clearOrders()}>
 					Clear
 				</button>
-				<button class="btn preset-filled-primary-500" onclick={handlePrint}>Print</button>
+				<button class="btn preset-filled-primary-500" onclick={handlePrint}>Druck Küche</button>
+				<button class="btn preset-filled-primary-500" onclick={handleOrderNrPrint}
+					>Druck Kunde</button
+				>
 			</div>
 		</div>
 	</aside>
