@@ -3,6 +3,7 @@
 	import Recursive from './Recursive.svelte';
 	import { order } from './order.svelte.ts';
 	import { onMount } from 'svelte';
+	import { PersistedState } from 'runed';
 	import ReceiptPrinterEncoder from '@point-of-sale/receipt-printer-encoder';
 
 	let printer: any;
@@ -10,6 +11,8 @@
 
 	let printerID = $state();
 	let connected = $state(false);
+
+	let orderCounter = new PersistedState('orderCounter', 1, { syncTabs: false });
 
 	onMount(async () => {
 		const WebBluetoothReceiptPrinter = (await import('@receipt-printer')).default;
@@ -30,6 +33,7 @@
 		}
 		let data = encoder.initialize().text('Bestellungäöü').newline().encode();
 		printer.print(data);
+		orderCounter.current++;
 	};
 </script>
 
@@ -43,7 +47,7 @@
 	</main>
 	<aside class="grid h-full max-h-full grid-rows-[1fr_auto] overflow-hidden">
 		<div class="overflow-y-auto">
-			<h2 class="h2">Bestellung</h2>
+			<h2 class="h2">Bestellung {orderCounter.current}</h2>
 			<div class="flex max-h-full flex-col gap-2 overflow-y-auto">
 				{#if order.list.length === 0}
 					<p class="text-center">Keine Artikel in der Bestellung</p>
