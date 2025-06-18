@@ -25,6 +25,13 @@
 		});
 	});
 
+	const resetAll = () => {
+		order.clearOrders();
+		orderCounter.current = 1;
+		printerID.current = null;
+		connected = false;
+	};
+
 	const checkConnection = async () => {
 		if (!connected) {
 			if (printerID.current) {
@@ -91,6 +98,7 @@
 
 		printer.print(data);
 		orderCounter.current++;
+		order.clearOrders();
 	};
 
 	const handleOrderNrPrint = async () => {
@@ -114,11 +122,10 @@
 
 <div class="grid h-screen gap-5 p-5 md:grid-cols-[4fr_1fr]">
 	<h1 class="hidden">Kassensystem</h1>
-	<main>
-		<div>
-			<h2 class="h2">Produkte</h2>
-			<Recursive items={articles} />
-		</div>
+	<main class="flex flex-col justify-between gap-5">
+		<h2 class="h2">Produkte</h2>
+		<Recursive items={articles} />
+		<button class="btn preset-filled-error-500 w-fit" onclick={resetAll}>reset</button>
 	</main>
 	<aside class="grid h-full max-h-full grid-rows-[1fr_auto] overflow-hidden">
 		<div class="overflow-y-auto">
@@ -150,10 +157,10 @@
 				<button class="btn preset-filled-primary-500" onclick={() => order.clearOrders()}>
 					Clear
 				</button>
-				<button class="btn preset-filled-primary-500" onclick={handlePrint}>Druck Küche</button>
 				<button class="btn preset-filled-primary-500" onclick={handleOrderNrPrint}
 					>Druck Kunde</button
 				>
+				<button class="btn preset-filled-primary-500" onclick={handlePrint}>Druck Küche</button>
 			</div>
 		</div>
 	</aside>
