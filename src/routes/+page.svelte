@@ -17,7 +17,7 @@
 	onMount(async () => {
 		const WebBluetoothReceiptPrinter = (await import('@receipt-printer')).default;
 		printer = new WebBluetoothReceiptPrinter();
-		printer.addEventListener('connected', (device) => {
+		printer.addEventListener('connected', (device: { id: null }) => {
 			printerID.current = device.id;
 			connected = true;
 			console.log('Connected to printer:', device);
@@ -153,14 +153,14 @@
 		<div>
 			<hr class="hr mt-4 mb-2" />
 			<p class="mb-4 text-3xl font-black">Total: {order.sum}</p>
-			<div>
+			<div class="grid gap-6">
 				<button class="btn preset-filled-primary-500" onclick={() => order.clearOrders()}>
 					Clear
 				</button>
-				<button class="btn preset-filled-primary-500" onclick={handleOrderNrPrint}
+				<button class="btn-lg preset-filled-primary-500" onclick={handleOrderNrPrint}
 					>Druck Kunde</button
 				>
-				<button class="btn preset-filled-primary-500" onclick={handlePrint}>Druck Küche</button>
+				<button class="btn-lg preset-filled-primary-500" onclick={handlePrint}>Druck Küche</button>
 			</div>
 		</div>
 	</aside>
