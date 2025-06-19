@@ -98,7 +98,6 @@
 
 		printer.print(data);
 		orderCounter.current++;
-		order.clearOrders();
 	};
 
 	const handleOrderNrPrint = async () => {
