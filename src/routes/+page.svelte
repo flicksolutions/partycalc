@@ -3,11 +3,16 @@
 	import Recursive from './Recursive.svelte';
 	import { order } from './order.svelte.ts';
 	import { onMount } from 'svelte';
-	import { ElementSize, PersistedState } from 'runed';
+	import { PersistedState } from 'runed';
 	import ReceiptPrinterEncoder from '@point-of-sale/receipt-printer-encoder';
 
+	const OFFSET = 14;
 	let printer: any;
-	const encoder = new ReceiptPrinterEncoder();
+	const encoder = new ReceiptPrinterEncoder({
+		columns: 48
+	})
+		.initialize()
+		.align('right');
 
 	let printerID = new PersistedState('printerID', null, { syncTabs: false });
 	let connected = $state(false);
@@ -81,7 +86,7 @@
 			[
 				{ width: firstColumnWidth, marginRight: 1, align: 'right' },
 				{
-					width: encoder.columns - firstColumnWidth - 1,
+					width: encoder.columns - OFFSET - firstColumnWidth - 1,
 					align: 'left'
 				}
 			],
@@ -106,7 +111,7 @@
 		}
 		let data = encoder
 			.initialize()
-			.box({ width: encoder.columns, align: 'center', style: 'double' }, (encoder) =>
+			.box({ width: encoder.columns - OFFSET, align: 'center', style: 'double' }, (encoder) =>
 				encoder.size(2, 2).line(`Bestellung`).line(`Nr. ${orderCounter.current}`)
 			)
 			.newline()
