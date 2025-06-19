@@ -97,7 +97,6 @@
 			.encode();
 
 		printer.print(data);
-		orderCounter.current++;
 	};
 
 	const handleOrderNrPrint = async () => {
@@ -153,7 +152,13 @@
 			<hr class="hr mt-4 mb-2" />
 			<p class="mb-4 text-3xl font-black">Total: {order.sum}</p>
 			<div class="grid gap-6">
-				<button class="btn preset-filled-primary-500" onclick={() => order.clearOrders()}>
+				<button
+					class="btn preset-filled-primary-500"
+					onclick={() => {
+						orderCounter.current++;
+						order.clearOrders();
+					}}
+				>
 					Clear
 				</button>
 				<button class="btn-lg preset-filled-primary-500" onclick={handleOrderNrPrint}
