@@ -83,56 +83,56 @@
 		[
 			[
 				{
-					"id": 25,
+					"id": 16,
 					"title": "Bratwurst mit Pommes",
 					"price": 14
 				},
 				{
-					"id": 26,
+					"id": 17,
 					"title": "Bratwurst mit Brot",
 					"price": 8
 				},
 				{
-					"id": 27,
+					"id": 18,
 					"title": "Bratwurst mit Salat",
 					"price": 14
 				},
 				{
-					"id": 28,
+					"id": 19,
 					"title": "Bratwurst gemischt",
 					"price": 14
 				}
 			],
 			[
 				{
-					"id": 22,
+					"id": 20,
 					"title": "Steak mit Pommes",
 					"price": 17
 				},
 				{
-					"id": 23,
+					"id": 21,
 					"title": "Steak mit Brot",
 					"price": 12
 				},
 				{
-					"id": 24,
+					"id": 22,
 					"title": "Steak mit Salat",
 					"price": 17
 				},
 				{
-					"id": 27,
+					"id": 23,
 					"title": "Steak gemischt",
 					"price": 17
 				}
 			],
 			[
 				{
-					"id": 18,
+					"id": 24,
 					"title": "Grillkäse mit Pommes",
 					"price": 13
 				},
 				{
-					"id": 18,
+					"id": 25,
 					"title": "Grillkäse mit Salat",
 					"price": 13
 				},
@@ -143,22 +143,22 @@
 				}
 			],
 			{
-				"id": 25,
+				"id": 27,
 				"title": "Salat",
 				"price": 4
 			},
 			{
-				"id": 19,
+				"id": 28,
 				"title": "Pommes",
 				"price": 7
 			},
 			{
-				"id": 20,
+				"id": 29,
 				"title": "Hot Dog",
 				"price": 7
 			},
 			{
-				"id": 21,
+				"id": 30,
 				"title": "Fondue",
 				"price": 7
 			}
