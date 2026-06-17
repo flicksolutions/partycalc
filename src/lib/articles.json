@@ -3,12 +3,12 @@
 		[
 			{
 				"id": 2,
-				"title": "Mineral, 50cl",
-				"price": 4
+				"title": "Redbull",
+				"price": 4.5
 			},
 			{
 				"id": 3,
-				"title": "Softdrink, 45cl/50cl",
+				"title": "Softdrink, 50cl",
 				"price": 4.5
 			},
 			{
@@ -48,7 +48,7 @@
 			{
 				"id": 10,
 				"title": "Wein",
-				"price": 12
+				"price": 30
 			}
 		]
 	],
@@ -77,6 +77,11 @@
 			{
 				"id": 15,
 				"title": "Zopf",
+				"price": 3
+			},
+			{
+				"id": 31,
+				"title": "Chips",
 				"price": 3
 			}
 		],
@@ -142,7 +147,7 @@
 					"price": 13
 				}
 			],
-			{
+			[{
 				"id": 27,
 				"title": "Salat",
 				"price": 4
@@ -159,9 +164,9 @@
 			},
 			{
 				"id": 30,
-				"title": "Fondue",
-				"price": 7
-			}
+				"title": "Falafel",
+				"price": 14
+			}]
 		]
 	]
 ]
